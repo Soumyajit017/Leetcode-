@@ -12,7 +12,7 @@ class Solution:
             mid = l + (r-l)//2
             if guess(mid) == 0:
                 return mid 
-            if guess(mid) == -1:
+            elif guess(mid) == -1:
                 r = mid-1
             else:
                 l = mid+1
