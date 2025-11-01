@@ -3,7 +3,6 @@ class Solution:
         l,r = 0, len(nums)-1
         if not nums:
             return [-1,-1]
-        res = []
         while l <=r:
             mid = l + (r-l)//2
             if nums[mid]>=target:
@@ -11,7 +10,7 @@ class Solution:
             else:
                 l = mid+1 #returns the lower bound, also includes the insert position where it can be inserted if not present
         if l < len(nums) and nums[l] == target: #for the safety, if the l doesn't exist why need to go for the right part
-            res.append(l)
+            left = l
         else:
             return [-1,-1]
         l,r = 0,len(nums)-1
@@ -21,5 +20,5 @@ class Solution:
                 l = mid+1
             else:
                 r = mid-1
-        res.append(r) 
-        return res
+        right = r 
+        return [left,right]
