@@ -3,13 +3,14 @@ class Solution:
         if not s or s[0] == '0':
             return 0
         n = len(s)
-        dp = [0] * (n+1)
-        dp[0], dp[1] = 1,1
-        for i in range(2,n+1):
-            ones = int(s[i-1])
-            twos = int(s[i-2:i])
-            if 1 <=  ones <= 9:
-                dp[i] += dp[i-1]
+        p1,p2 = 1,1
+        for i in range(1,n):
+            curr = 0
+            ones = int(s[i])
+            twos = int(s[i-1:i+1])
+            if 1 <= ones <= 9:
+                curr += p1
             if 10 <= twos <= 26:
-                dp[i] += dp[i-2]
-        return dp[n]
+                curr += p2
+            p2,p1 = p1, curr
+        return p1
