@@ -10,11 +10,7 @@ class Solution:
             return None
         root_val = preorder[0]
         root = TreeNode(root_val)
-
         mid = inorder.index(root_val)
-        #left Sub-tree forming, left recursion
         root.left = self.buildTree(preorder[1:mid+1],inorder[:mid])
-        #right Sub-Tree forming,right recursion
         root.right = self.buildTree(preorder[mid+1:],inorder[mid+1:])
-
         return root
